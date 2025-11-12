@@ -10,8 +10,7 @@ function LandingPage({ onNavigate }: { onNavigate: (page: 'login') => void }) {
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
       <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-lg">📍</div>
+          <div className="flex items-center">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">Next Stop</h1>
           </div>
           <button 
@@ -23,30 +22,44 @@ function LandingPage({ onNavigate }: { onNavigate: (page: 'login') => void }) {
         </div>
       </nav>
 
-      <section className="max-w-7xl mx-auto px-6 py-24 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-6">
-          <span>⚡</span>
-          <span className="text-sm font-semibold text-orange-700">Descubre lugares auténticos</span>
-        </div>
-        <h2 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-          Tu guía de lugares <br />
-          <span className="bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">
-            ocultos y especiales
-          </span>
-        </h2>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-12">
-          Únete a una comunidad de exploradores que descubren gemas escondidas fuera de las rutas turísticas.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => onNavigate('login')}
-            className="bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-full text-lg px-8 py-3 font-semibold hover:shadow-lg transition"
-          >
-            Explorar ahora →
-          </button>
-          <button className="border-2 border-slate-300 text-slate-700 rounded-full text-lg px-8 py-3 font-semibold hover:bg-slate-50 transition">
-            Ver demo
-          </button>
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+          {/* Columna de texto */}
+          <div className="text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-6">
+              <span className="text-sm font-semibold text-orange-700">Descubre lugares auténticos</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
+              Tu guía de lugares <br />
+              <span className="bg-gradient-to-r from-orange-500 to-purple-600 bg-clip-text text-transparent">
+                ocultos y especiales
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 md:max-w-xl md:mx-0 mx-auto mb-8">
+              Únete a una comunidad de exploradores que descubren gemas escondidas fuera de las rutas turísticas.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
+              <button
+                onClick={() => onNavigate('login')}
+                className="bg-gradient-to-r from-orange-500 to-purple-600 text-white rounded-full text-lg px-8 py-3 font-semibold hover:shadow-lg transition"
+              >
+                Explorar ahora
+              </button>
+              <button className="border-2 border-slate-300 text-slate-700 rounded-full text-lg px-8 py-3 font-semibold hover:bg-slate-50 transition">
+                Ver demo
+              </button>
+            </div>
+          </div>
+
+          {/* Columna de imagen */}
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-br from-orange-200/50 to-purple-200/50 rounded-3xl blur-2xl" aria-hidden="true"></div>
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop"
+              alt="Paisaje inspirador de viaje"
+              className="relative w-full rounded-3xl shadow-xl ring-1 ring-slate-200 object-cover aspect-[4/3]"
+            />
+          </div>
         </div>
       </section>
 
@@ -54,15 +67,55 @@ function LandingPage({ onNavigate }: { onNavigate: (page: 'login') => void }) {
         <h3 className="text-4xl font-bold text-center text-slate-900 mb-16">¿Por qué Next Stop?</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { icon: '📍', title: 'Descubre Gemas Ocultas', desc: 'Accede a una base de datos creciente de lugares auténticos.' },
-            { icon: '👥', title: 'Comunidad Global', desc: 'Conecta con viajeros de todo el mundo.' },
-            { icon: '⚡', title: 'Recomendaciones con IA', desc: 'Obtén sugerencias personalizadas.' },
-            { icon: '🌍', title: 'Mapas Interactivos', desc: 'Visualiza lugares con coordenadas GPS precisas.' },
-            { icon: '🔍', title: 'Filtros Avanzados', desc: 'Busca por categoría, ubicación y más.' },
-            { icon: '✅', title: 'Verificado', desc: 'Cada lugar es revisado por moderadores.' },
-          ].map((f, i) => (
-            <div key={i} className="p-8 bg-white rounded-2xl border border-slate-200 hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">{f.icon}</div>
+            { key: 'gem', title: 'Descubre Gemas Ocultas', desc: 'Accede a una base de datos creciente de lugares auténticos.' },
+            { key: 'users', title: 'Comunidad Global', desc: 'Conecta con viajeros de todo el mundo.' },
+            { key: 'ai', title: 'Recomendaciones con IA', desc: 'Obtén sugerencias personalizadas.' },
+            { key: 'map', title: 'Mapas Interactivos', desc: 'Visualiza lugares con coordenadas GPS precisas.' },
+            { key: 'search', title: 'Filtros Avanzados', desc: 'Busca por categoría, ubicación y más.' },
+            { key: 'shield', title: 'Contenido Verificado', desc: 'Cada lugar es revisado por moderadores.' },
+          ].map((f) => (
+            <div key={f.key} className="p-8 bg-white rounded-2xl border border-slate-200 hover:shadow-lg transition-shadow">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-purple-600 flex items-center justify-center mb-4">
+                {/* Iconos minimalistas con stroke blanco */}
+                {f.key === 'gem' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 3 3 9 12 21 21 9 12 3"/>
+                    <path d="M12 3l0 18"/>
+                    <path d="M3 9l18 0"/>
+                  </svg>
+                )}
+                {f.key === 'users' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="8" r="3"/>
+                    <path d="M4 19c0-3 2.5-5 5-5"/>
+                    <circle cx="17" cy="9" r="2.5"/>
+                    <path d="M14 19c.3-2.2 2-3.8 4-4"/>
+                  </svg>
+                )}
+                {f.key === 'ai' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M13 3l-6 9h5l-1 9 6-10h-5l1-8z"/>
+                  </svg>
+                )}
+                {f.key === 'map' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/>
+                    <path d="M9 4v14M15 6v14"/>
+                  </svg>
+                )}
+                {f.key === 'search' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="5"/>
+                    <path d="M16 16l5 5"/>
+                  </svg>
+                )}
+                {f.key === 'shield' && (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                )}
+              </div>
               <h4 className="text-xl font-bold text-slate-900 mb-3">{f.title}</h4>
               <p className="text-slate-600">{f.desc}</p>
             </div>
@@ -188,14 +241,6 @@ function LoginPage({ onLogin }: { onLogin: (user: User) => void }) {
               {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
             </button>
           </form>
-
-          <div className="mt-8 p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-orange-500/10 border border-white/10">
-            <p className="text-xs font-semibold text-white/60 mb-3 uppercase">Demo</p>
-            <div className="text-xs text-white/70 space-y-1">
-              <div><span className="text-white/50">Usuario:</span> <span className="text-purple-400 font-mono">demo@test.com / 123456</span></div>
-              <div><span className="text-white/50">Moderador:</span> <span className="text-orange-400 font-mono">mod@test.com / 123456</span></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -241,7 +286,7 @@ function HomePage({ user, places, onNavigate, onLogout }: any) {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full font-semibold transition ${selectedCategory === cat ? 'bg-purple-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
             >
-              {cat === 'restaurant' ? '🍽️ Restaurantes' : cat === 'hotel' ? '🏨 Hoteles' : cat === 'natural' ? '🌲 Naturales' : '🏔️ Miradores'}
+              {cat === 'restaurant' ? 'Restaurantes' : cat === 'hotel' ? 'Hoteles' : cat === 'natural' ? 'Naturales' : 'Miradores'}
             </button>
           ))}
         </div>
@@ -293,7 +338,7 @@ function ProfilePage({ user, places, onNavigate, onLogout }: any) {
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">{user.name}</h2>
           <p className="text-gray-600 mb-2"><strong>Email:</strong> {user.email}</p>
-          <p className="text-gray-600 mb-2"><strong>Rol:</strong> {user.role === 'moderator' ? '👮 Moderador' : '👤 Usuario'}</p>
+          <p className="text-gray-600 mb-2"><strong>Rol:</strong> {user.role === 'moderator' ? 'Moderador' : 'Usuario'}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -392,7 +437,7 @@ function ModeratorDashboard({ user, places, onUpdatePlace, onNavigate, onLogout 
                     }}
                     className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700"
                   >
-                    ✓ Aprobar
+                    Aprobar
                   </button>
                   <button
                     onClick={() => {
@@ -401,7 +446,7 @@ function ModeratorDashboard({ user, places, onUpdatePlace, onNavigate, onLogout 
                     }}
                     className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700"
                   >
-                    ✗ Rechazar
+                    Rechazar
                   </button>
                 </div>
               </div>

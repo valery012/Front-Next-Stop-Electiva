@@ -1,6 +1,7 @@
 {
   "name": "front-workspace",
   "private": true,
+  "type": "module",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "autoprefixer": "^10.4.21",
